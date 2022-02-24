@@ -1,11 +1,6 @@
-
 import pytest
-<<<<<<< HEAD
 
 from titles_to_s3 import json_to_s3
-=======
-from movie_titles_to_s3 import json_to_s3
->>>>>>> 9613a4329bd82624e96f6fa780a22020f2383521
 
 
 @pytest.mark.parametrize(

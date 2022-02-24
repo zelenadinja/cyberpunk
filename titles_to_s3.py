@@ -53,7 +53,7 @@ def get_titles(url: str) -> List[str]:
     """
     try:
         response = requests.get(str(url))
-    except:
+    except Exception:
         raise ValueError('Connection failed')
 
     soup = BeautifulSoup(response.content, 'html5lib')
