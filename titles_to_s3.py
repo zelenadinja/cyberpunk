@@ -1,18 +1,17 @@
-from typing import List, Any
-import requests  # type: ignore
-import json
-import io
-import sys
-import os
-
-from bs4 import BeautifulSoup
-import boto3
-from tqdm import tqdm
-from botocore.exceptions import ClientError
-from boto3_type_annotations.s3 import Client
-from dotenv import load_dotenv
 import argparse
+import io
+import json
+import os
+import sys
+from typing import Any, List
 
+import boto3
+import requests  # type: ignore
+from boto3_type_annotations.s3 import Client
+from botocore.exceptions import ClientError
+from bs4 import BeautifulSoup
+from dotenv import load_dotenv
+from tqdm import tqdm
 
 load_dotenv()
 
