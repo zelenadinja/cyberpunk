@@ -1,7 +1,7 @@
 
 import pytest
 
-from movie_titles_to_s3 import json_to_s3
+from titles_to_s3 import json_to_s3
 
 
 @pytest.mark.parametrize(

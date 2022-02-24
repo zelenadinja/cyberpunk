@@ -52,7 +52,11 @@ def get_titles(url: str) -> List[str]:
             movie titles
 
     """
-    response = requests.get(str(url))
+    try:
+        response = requests.get(str(url))
+    except:
+        raise ValueError('Connection failed')
+
     soup = BeautifulSoup(response.content, 'html5lib')
     titles: List[Any] = soup.find_all(
         'span', attrs={"itemprop": "name"}
