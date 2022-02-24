@@ -1,7 +1,11 @@
 
 import pytest
+<<<<<<< HEAD
 
 from titles_to_s3 import get_titles
+=======
+from movie_titles_to_s3 import get_titles
+>>>>>>> 9613a4329bd82624e96f6fa780a22020f2383521
 
 
 @pytest.mark.parametrize(
