@@ -1,11 +1,10 @@
-from typing import List, Dict, Any
+from typing import List, Any
 import requests
 import json
 import io
 import sys
 import os
 
-import bs4  # type: ignore
 from bs4 import BeautifulSoup
 import boto3
 from tqdm import tqdm
@@ -26,8 +25,8 @@ def get_params():
     parser = argparse.ArgumentParser()
     parser.add_argument(
         'movies_url',
-         type=str,
-          help='URL with movie titles')
+        type=str,
+        help='URL with movie titles')
     parser.add_argument(
         's3_object_key',
         type=str,
@@ -79,23 +78,29 @@ def json_to_s3(object_body: Any, object_key: str) -> bool:
 
     Returns True if uploaded to Bucket.
     """
-    json_obj = json.dumps(object_body) # json object
+    json_obj = json.dumps(object_body)  # json object
     filesize: int = sys.getsizeof(json_obj)
 
     s3client: Client = boto3.client('s3')
 
     try:
-        with tqdm(total=filesize, unit='B', unit_scale=True, desc='Uploading file to S3 Bucket') as pbar:
+        with tqdm(
+            total=filesize,
+            unit='B',
+            unit_scale=True,
+            desc='Uploading file to S3 Bucket'
+        ) as pbar:
 
             s3client.upload_fileobj(
                 Fileobj=io.BytesIO(json_obj.encode()),
                 Bucket=S3_BUCKET,
                 Key=object_key,
-                Callback= lambda bytes_uploaded: pbar.update(bytes_uploaded)
+                Callback=lambda bytes_uploaded: pbar.update(bytes_uploaded)
             )
     except ClientError:
         return False
     return True
+
 
 if __name__ == '__main__':
 
@@ -104,4 +109,3 @@ if __name__ == '__main__':
     print(args.s3_object_key)
     titles = get_titles(url=args.movies_url)
     json_to_s3(object_body=titles, object_key=args.s3_object_key)
-
