@@ -1,5 +1,5 @@
 from typing import List, Any
-import requests
+import requests  # type: ignore
 import json
 import io
 import sys
