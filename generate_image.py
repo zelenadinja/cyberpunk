@@ -19,4 +19,3 @@ REDDIT = praw.Reddit(
 )
 
 CYBERPUNK_SUB = REDDIT.subreddit('cyberpunk')
-

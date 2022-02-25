@@ -26,7 +26,7 @@ jobs:
       uses: alexanderdamiani/pylinter@v1.1.1
       with:
         python-root: '.'
-        flake8-flags: '--max-line-length=100'
+        flake8-flags: '--max-line-length=120'
         mypy-flags: '--ignore-missing-imports'
         fail-on-isort: false
         skip-flake8: false
