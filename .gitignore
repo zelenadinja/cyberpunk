@@ -152,4 +152,4 @@ cython_debug/
 
 #Dependecies for lambda function
 
-lambda_deps/
+lambda_ge_img_deps/

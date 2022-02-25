@@ -4,7 +4,8 @@ import random
 
 import boto3
 import praw
-import requests
+import requests  # type: ignore
+
 #  from dotenv import load_dotenv
 #  load_dotenv()
 
