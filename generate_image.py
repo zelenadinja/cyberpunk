@@ -6,8 +6,10 @@ import boto3
 import praw
 import requests  # type: ignore
 
-#  from dotenv import load_dotenv
-#  load_dotenv()
+from dotenv import load_dotenv
+
+
+load_dotenv()
 
 S3_BUCKET = os.environ['S3_BUCKET']
 CLIENT_ID = os.environ['CLIENT_ID']
@@ -47,7 +49,7 @@ def cyberpunk_img_to_s3() -> bool:
 
     random_idx: int = random.randint(0, len(urls))  # this returns array
     image_url: str = urls[random_idx]
-    # image_ext: str = extensions[random_idx]
+    image_ext: str = extensions[random_idx]
 
     try:
         response = requests.get(image_url)
@@ -57,7 +59,15 @@ def cyberpunk_img_to_s3() -> bool:
     img = BytesIO(response.content)
     s3client = boto3.client('s3')
     try:
-        s3client.upload_fileobj(Fileobj=img, Bucket=S3_BUCKET, Key='POST/cyberpunk')
+        s3client.upload_fileobj(
+            Fileobj=img,
+            Bucket=S3_BUCKET,
+            Key='POST/cyberpunk',
+            ExtraArgs={"ContentType": f"image/{image_ext.split('.')[1]}"}
+        )
     except Exception:
         return False
     return True
+
+if __name__ == '__main__':
+    cyberpunk_img_to_s3()
