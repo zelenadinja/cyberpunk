@@ -5,9 +5,8 @@ import random
 import boto3
 import praw
 import requests
-#from dotenv import load_dotenv
-
-#load_dotenv()
+#  from dotenv import load_dotenv
+#  load_dotenv()
 
 S3_BUCKET = os.environ['S3_BUCKET']
 CLIENT_ID = os.environ['CLIENT_ID']
@@ -45,9 +44,9 @@ def cyberpunk_img_to_s3() -> bool:
             urls.append(post.url.lower())
             extensions.append(extension)
 
-    random_idx: int = random.randint(0, len(urls))  #  this returns array
+    random_idx: int = random.randint(0, len(urls))  # this returns array
     image_url: str = urls[random_idx]
-    image_ext: str = extensions[random_idx]
+    # image_ext: str = extensions[random_idx]
 
     try:
         response = requests.get(image_url)
