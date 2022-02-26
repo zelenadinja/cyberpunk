@@ -5,9 +5,7 @@ from io import BytesIO
 import boto3
 import praw
 import requests  # type: ignore
-
 from dotenv import load_dotenv
-
 
 load_dotenv()
 
