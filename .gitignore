@@ -152,7 +152,4 @@ cython_debug/
 
 #lambda dependecies
 
-dependencies/*
-
-#include empty DIR
-!dependencies/.gitkeep
+dependencies/
