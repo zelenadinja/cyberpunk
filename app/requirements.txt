@@ -1,0 +1,4 @@
+boto3==1.21.6
+python-dotenv==0.19.2
+Flask==2.0.3
+mypy-boto3-lambda==1.21.6
