@@ -16,7 +16,7 @@ COPY .env app
 
 RUN pip install -r app/requirements.txt
 
-EXPOSE 8888
+EXPOSE 8081
 
 CMD python3 app/app.py
 
